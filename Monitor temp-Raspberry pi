@@ -1,0 +1,65 @@
+import time
+import sys
+import datetime
+from time import sleep, strftime, time
+
+while True:
+  #input handling code
+  userInput = input("Would you like to monitor the temeprature of the Raspberry pi? yes/no? \n").lower()
+  
+  if userInput == "yes":
+    print("That's what I am talking about! Let's continue. Give me a moment while I execute commands.")
+    
+   if userInput == "no":
+    print("Now you wont know how chill your Raspberry pi is, Goodbye.") #cuts off commands
+    exit() #exits commands
+  elif userInput != "yes" "no":
+    print("I only accept yes or no answers, please try again.") # cycles bacck through loop until a yes or no is given by user
+  
+  
+  def rad_temp():
+    myFile = ("/sys/class/thermal/thermal_zone0/temp", "r") #opens temperature directory
+    
+    if (myFile.mode == "r"):
+      line = myFile.readline()
+    
+    else:
+      line = 'Error: File not opened for reading.'
+    myFile.close() #closes and saves file
+    return line
+   
+   
+   def read_from_file():
+    cu = read_temp()
+    cuTemp = int(cu)/1000 #divides temperature by 1000
+    
+   read_from_file()
+   
+   for temp in(list(range, 6)): #produces 5 temperatures
+    t = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    for i in range(1):
+      sleep(5) #produces temperature every 5 seconds
+      print(t) #prints date and time
+      print("Current temperature is:", read_temp()) #prints temperature
+      
+  def write_single(myString):
+    myFile1 = open(./my-pi-temps.sh", "a") #additional file created by me to write and store data
+     if (myFile1.mode == "a"):
+      myFile1.write(myString) #writes string to file
+      write_status = "success"
+     else:
+       write_stsus = 'Error: File not opened for appending." #returns error message
+       myFile1.close() #saves and closes file
+        return write_status
+        
+        
+  def write_to_file():
+    line = 'The current temperature is-\n' #writes this string into my file
+    write_status = write_single(line)
+    print('Write Status: %s' % write_status
+    
+    
+ t = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+ 
+write_to_file()
+exit()
